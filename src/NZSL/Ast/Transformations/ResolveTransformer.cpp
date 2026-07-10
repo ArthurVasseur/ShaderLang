@@ -3018,7 +3018,10 @@ namespace nzsl::Ast
 			if (forEachStatement.statement)
 			{
 				PushScope();
-				HandleStatement(forEachStatement.statement);
+				{
+					RegisterUnresolved(forEachStatement.varName);
+					HandleStatement(forEachStatement.statement);
+				}
 				PopScope();
 			}
 
