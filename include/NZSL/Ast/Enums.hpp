@@ -81,7 +81,7 @@ namespace nzsl::Ast
 		FragCoord               =  1, // gl_FragCoord / FragCoord
 		FragDepth               =  2, // gl_FragDepth / FragDepth
 		GlocalInvocationIndices = 12, // gl_GlobalInvocationID / GlobalInvocationId
-		InstanceIndex           =  6, // gl_InstanceIndex (or gl_BaseInstance + gl_InstanceID) / InstanceId
+		InstanceIndex           =  6, // gl_InstanceIndex (or gl_BaseInstance + gl_InstanceID) / InstanceIndex
 		LocalInvocationIndex    = 11, // gl_LocalInvocationIndex / LocalInvocationIndex
 		LocalInvocationIndices  = 10, // gl_LocalInvocationID / LocalInvocationId
 		VertexIndex             =  7, // gl_VertexID - gl_VertexIndex / VertexId
