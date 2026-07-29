@@ -2640,9 +2640,10 @@ namespace nzsl
 				const Ast::TextureType& textureType = std::get<Ast::TextureType>(exprType);
 				if (textureType.format != ImageFormat::Unknown)
 				{
-					assert(textureType.format == ImageFormat::RGBA8);
+					auto formatIt = LangData::s_imageFormats.find(textureType.format);
+					assert(formatIt != LangData::s_imageFormats.end());
 					BeginLayout();
-					Append("rgba8");
+					Append(formatIt->second.identifier);
 				}
 			}
 
