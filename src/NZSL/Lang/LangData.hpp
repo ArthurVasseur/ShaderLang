@@ -80,8 +80,23 @@ namespace nzsl::LangData
 		{ "readwrite", { 1, Nz::SafeCast<std::uint32_t>(AccessPolicy::ReadWrite) } },
 		{ "writeonly", { 2, Nz::SafeCast<std::uint32_t>(AccessPolicy::WriteOnly) } },
 
-		// TODO: Register more image formats
-		{ "rgba8", { 3, Nz::SafeCast<std::uint32_t>(ImageFormat::RGBA8) }}
+		// TODO: Register more image formats (integer and narrow ones, see s_imageFormats)
+		{ "rgba8", { 3, Nz::SafeCast<std::uint32_t>(ImageFormat::RGBA8) }},
+		{ "rgba8_snorm", { 4, Nz::SafeCast<std::uint32_t>(ImageFormat::RGBA8Snorm) }},
+		{ "rgba16f", { 5, Nz::SafeCast<std::uint32_t>(ImageFormat::RGBA16f) }},
+		{ "rgba32f", { 6, Nz::SafeCast<std::uint32_t>(ImageFormat::RGBA32f) }}
+	});
+
+	struct ImageFormatData
+	{
+		std::string_view identifier;
+	};
+
+	constexpr auto s_imageFormats = frozen::make_unordered_map<ImageFormat, ImageFormatData>({
+		{ ImageFormat::RGBA8,      { "rgba8" } },
+		{ ImageFormat::RGBA8Snorm, { "rgba8_snorm" } },
+		{ ImageFormat::RGBA16f,    { "rgba16f" } },
+		{ ImageFormat::RGBA32f,    { "rgba32f" } },
 	});
 
 	struct DepthWriteModeData

@@ -899,8 +899,8 @@ namespace nzsl::Ast
 							throw CompilerTextureUnexpectedFormatError{ sourceLocation, "<TODO>" };
 
 						ImageFormat format = static_cast<ImageFormat>(std::get<std::uint32_t>(formatValue));
-						if (format != ImageFormat::RGBA8) //< TODO: Add support for more formats
-							throw CompilerTextureUnexpectedFormatError{ sourceLocation, "<TODO>" };
+						if (LangData::s_imageFormats.find(format) == LangData::s_imageFormats.end())
+							throw CompilerTextureUnexpectedFormatError{ sourceLocation, std::to_string(Nz::SafeCast<std::uint32_t>(format)) };
 
 						formatOpt = format;
 					}

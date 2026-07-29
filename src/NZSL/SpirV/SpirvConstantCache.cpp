@@ -1108,11 +1108,14 @@ namespace nzsl
 		{
 			switch (type.format)
 			{
+				// Keep in sync with LangData::s_imageFormats
 				case ImageFormat::Unknown: return SpirvImageFormat::Unknown;
 				case ImageFormat::RGBA8: return SpirvImageFormat::Rgba8;
+				case ImageFormat::RGBA8Snorm: return SpirvImageFormat::Rgba8Snorm;
+				case ImageFormat::RGBA16f: return SpirvImageFormat::Rgba16f;
 				case ImageFormat::RGBA32f: return SpirvImageFormat::Rgba32f;
 				default:
-					throw std::runtime_error("<TODO>");
+					throw std::runtime_error("unsupported image format");
 			}
 		}();
 

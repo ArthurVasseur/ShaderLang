@@ -446,8 +446,9 @@ namespace nzsl
 
 		if (textureType.format != ImageFormat::Unknown)
 		{
-			assert(textureType.format == ImageFormat::RGBA8); //< TODO
-			Append(", rgba8");
+			auto formatIt = LangData::s_imageFormats.find(textureType.format);
+			assert(formatIt != LangData::s_imageFormats.end());
+			Append(", ", formatIt->second.identifier);
 		}
 		Append("]");
 	}
