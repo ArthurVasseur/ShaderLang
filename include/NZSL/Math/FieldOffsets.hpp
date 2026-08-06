@@ -38,7 +38,7 @@ namespace nzsl
 			constexpr FieldOffsets& operator=(const FieldOffsets&) = default;
 			constexpr FieldOffsets& operator=(FieldOffsets&&) = default;
 
-			static constexpr std::size_t GetAlignement(StructLayout layout, StructFieldType fieldType);
+			static constexpr std::size_t GetAlignment(StructLayout layout, StructFieldType fieldType);
 			static constexpr std::size_t GetCount(StructFieldType fieldType);
 			static constexpr std::size_t GetSize(StructFieldType fieldType);
 

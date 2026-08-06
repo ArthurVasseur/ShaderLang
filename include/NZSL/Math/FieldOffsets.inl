@@ -18,7 +18,7 @@ namespace nzsl
 
 	constexpr std::size_t FieldOffsets::AddField(StructFieldType type)
 	{
-		std::size_t fieldAlignement = GetAlignement(m_layout, type);
+		std::size_t fieldAlignement = GetAlignment(m_layout, type);
 
 		m_alignment = std::max(m_alignment, fieldAlignement);
 
@@ -32,9 +32,9 @@ namespace nzsl
 
 	constexpr std::size_t FieldOffsets::AddFieldArray(StructFieldType type, std::size_t arraySize)
 	{
-		std::size_t fieldAlignement = GetAlignement(m_layout, type);
+		std::size_t fieldAlignement = GetAlignment(m_layout, type);
 		if (m_layout == StructLayout::Std140)
-			fieldAlignement = Nz::AlignPow2(fieldAlignement, GetAlignement(StructLayout::Std140, StructFieldType::Float4));
+			fieldAlignement = Nz::AlignPow2(fieldAlignement, GetAlignment(StructLayout::Std140, StructFieldType::Float4));
 
 		m_alignment = std::max(fieldAlignement, m_alignment);
 
@@ -79,7 +79,7 @@ namespace nzsl
 	{
 		std::size_t fieldAlignement = structAlignment;
 		if (m_layout == StructLayout::Std140)
-			fieldAlignement = Nz::AlignPow2(fieldAlignement, GetAlignement(StructLayout::Std140, StructFieldType::Float4));
+			fieldAlignement = Nz::AlignPow2(fieldAlignement, GetAlignment(StructLayout::Std140, StructFieldType::Float4));
 
 		m_alignment = std::max(m_alignment, fieldAlignement);
 
@@ -102,7 +102,7 @@ namespace nzsl
 
 		std::size_t fieldAlignement = structAlignment;
 		if (m_layout == StructLayout::Std140)
-			fieldAlignement = Nz::AlignPow2(fieldAlignement, GetAlignement(StructLayout::Std140, StructFieldType::Float4));
+			fieldAlignement = Nz::AlignPow2(fieldAlignement, GetAlignment(StructLayout::Std140, StructFieldType::Float4));
 
 		m_alignment = std::max(m_alignment, fieldAlignement);
 
@@ -136,7 +136,7 @@ namespace nzsl
 		return m_size;
 	}
 
-	constexpr std::size_t FieldOffsets::GetAlignement(StructLayout layout, StructFieldType fieldType)
+	constexpr std::size_t FieldOffsets::GetAlignment(StructLayout layout, StructFieldType fieldType)
 	{
 		switch (layout)
 		{
