@@ -4,6 +4,8 @@
 			"name": "Output",
 			"structIndex": 0,
 			"layout": "std140",
+			"size": 36,
+			"alignment": 16,
 			"members": [
 				{
 					"name": "color",

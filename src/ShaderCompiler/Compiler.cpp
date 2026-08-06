@@ -802,8 +802,14 @@ You can also specify -header as a suffix (ex: --compile=glsl-header) to generate
 				structMemberArray.push_back(std::move(memberDoc));
 			}
 
-			if (fieldOffsets && structDecl.structIndex)
-				structFieldOffsets.emplace(*structDecl.structIndex, *fieldOffsets);
+			if (fieldOffsets)
+			{
+				structDoc["size"] = fieldOffsets->GetSize();
+				structDoc["alignment"] = fieldOffsets->GetAlignment();
+
+				if (structDecl.structIndex)
+					structFieldOffsets.emplace(*structDecl.structIndex, *fieldOffsets);
+			}
 
 			structDoc["members"] = std::move(structMemberArray);
 
