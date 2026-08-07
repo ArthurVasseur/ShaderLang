@@ -851,14 +851,14 @@ You can also specify -header as a suffix (ex: --compile=glsl-header) to generate
 	nlohmann::ordered_json Compiler::ReflectType(const nzsl::Ast::NoType& /*exprType*/) const
 	{
 		return {
-			{"type", "noType"}
+			{"kind", "noType"}
 		};
 	}
 
 	nlohmann::ordered_json Compiler::ReflectType(const nzsl::Ast::AliasType& exprType) const
 	{
 		return {
-			{"type",       "alias"},
+			{"kind",       "alias"},
 			{"targetType", ReflectType(exprType.TargetType())}
 		};
 	}
@@ -866,7 +866,7 @@ You can also specify -header as a suffix (ex: --compile=glsl-header) to generate
 	nlohmann::ordered_json Compiler::ReflectType(const nzsl::Ast::ArrayType& exprType) const
 	{
 		return {
-			{"type",      "array"},
+			{"kind",      "array"},
 			{"length",    exprType.length},
 			{"isWrapped", exprType.isWrapped},
 			{"innerType", ReflectType(exprType.InnerType())},
@@ -876,7 +876,7 @@ You can also specify -header as a suffix (ex: --compile=glsl-header) to generate
 	nlohmann::ordered_json Compiler::ReflectType(const nzsl::Ast::DynArrayType& exprType) const
 	{
 		return {
-			{"type",      "dynArray"},
+			{"kind",      "dynArray"},
 			{"isWrapped", exprType.isWrapped},
 			{"innerType", ReflectType(exprType.InnerType())},
 		};
@@ -885,7 +885,7 @@ You can also specify -header as a suffix (ex: --compile=glsl-header) to generate
 	nlohmann::ordered_json Compiler::ReflectType(const nzsl::Ast::FunctionType& exprType) const
 	{
 		return {
-			{"type", "function"},
+			{"kind", "function"},
 			{"index", exprType.funcIndex}
 		};
 	}
@@ -893,14 +893,14 @@ You can also specify -header as a suffix (ex: --compile=glsl-header) to generate
 	nlohmann::ordered_json Compiler::ReflectType(const nzsl::Ast::ImplicitArrayType& /*exprType*/) const
 	{
 		return {
-			{"type", "implicitArray"}
+			{"kind", "implicitArray"}
 		};
 	}
 
 	nlohmann::ordered_json Compiler::ReflectType(const nzsl::Ast::ImplicitMatrixType& exprType) const
 	{
 		return {
-			{"type",        "implicitMatrix"},
+			{"kind",        "implicitMatrix"},
 			{"columnCount", exprType.columnCount},
 			{"rowCount",    exprType.rowCount}
 		};
@@ -909,7 +909,7 @@ You can also specify -header as a suffix (ex: --compile=glsl-header) to generate
 	nlohmann::ordered_json Compiler::ReflectType(const nzsl::Ast::ImplicitVectorType& exprType) const
 	{
 		return {
-			{"type", "implicitVector"},
+			{"kind", "implicitVector"},
 			{"dims", exprType.componentCount}
 		};
 	}
@@ -917,7 +917,7 @@ You can also specify -header as a suffix (ex: --compile=glsl-header) to generate
 	nlohmann::ordered_json Compiler::ReflectType(const nzsl::Ast::IntrinsicFunctionType& exprType) const
 	{
 		return {
-			{"type",      "intrinsicFunction"},
+			{"kind",      "intrinsicFunction"},
 			{"intrinsic", nzsl::Parser::ToString(exprType.intrinsic)}
 		};
 	}
@@ -925,7 +925,7 @@ You can also specify -header as a suffix (ex: --compile=glsl-header) to generate
 	nlohmann::ordered_json Compiler::ReflectType(const nzsl::Ast::MatrixType& exprType) const
 	{
 		return {
-			{"type",        "matrix"},
+			{"kind",        "matrix"},
 			{"columnCount", exprType.columnCount},
 			{"rowCount",    exprType.rowCount},
 			{"cellType",    nzsl::Ast::ToString(exprType.type)},
@@ -935,7 +935,7 @@ You can also specify -header as a suffix (ex: --compile=glsl-header) to generate
 	nlohmann::ordered_json Compiler::ReflectType(const nzsl::Ast::MethodType& exprType) const
 	{
 		return {
-			{"type",        "method"},
+			{"kind",        "method"},
 			{"objectType",  ReflectType(exprType.ObjectType())},
 			{"methodIndex", exprType.methodIndex }
 		};
@@ -944,7 +944,7 @@ You can also specify -header as a suffix (ex: --compile=glsl-header) to generate
 	nlohmann::ordered_json Compiler::ReflectType(const nzsl::Ast::ModuleType& exprType) const
 	{
 		return {
-			{"type",  "module"},
+			{"kind",  "module"},
 			{"index", exprType.moduleIndex}
 		};
 	}
@@ -952,7 +952,7 @@ You can also specify -header as a suffix (ex: --compile=glsl-header) to generate
 	nlohmann::ordered_json Compiler::ReflectType(const nzsl::Ast::NamedExternalBlockType& exprType) const
 	{
 		return {
-			{"type",  "namedExternalBlock"},
+			{"kind",  "namedExternalBlock"},
 			{"index", exprType.namedExternalBlockIndex}
 		};
 	}
@@ -960,7 +960,7 @@ You can also specify -header as a suffix (ex: --compile=glsl-header) to generate
 	nlohmann::ordered_json Compiler::ReflectType(const nzsl::Ast::PrimitiveType& exprType) const
 	{
 		return {
-			{"type",          "primitive"},
+			{"kind",          "primitive"},
 			{"primitiveType", nzsl::Ast::ToString(exprType)}
 		};
 	}
@@ -968,7 +968,7 @@ You can also specify -header as a suffix (ex: --compile=glsl-header) to generate
 	nlohmann::ordered_json Compiler::ReflectType(const nzsl::Ast::PushConstantType& exprType) const
 	{
 		return {
-			{"type",        "push_constant"},
+			{"kind",        "push_constant"},
 			{"structIndex", exprType.containedType.structIndex}
 		};
 	}
@@ -976,7 +976,7 @@ You can also specify -header as a suffix (ex: --compile=glsl-header) to generate
 	nlohmann::ordered_json Compiler::ReflectType(const nzsl::Ast::SamplerType& exprType) const
 	{
 		return {
-			{"type",        "sampler"},
+			{"kind",        "sampler"},
 			{"depth",       exprType.depth},
 			{"dim",         nzsl::Parser::ToString(exprType.dim)},
 			{"sampledType", nzsl::Ast::ToString(exprType.sampledType)}
@@ -986,7 +986,7 @@ You can also specify -header as a suffix (ex: --compile=glsl-header) to generate
 	nlohmann::ordered_json Compiler::ReflectType(const nzsl::Ast::StorageType& exprType) const
 	{
 		return {
-			{"type",        "storage"},
+			{"kind",        "storage"},
 			{"structIndex", exprType.containedType.structIndex}
 		};
 	}
@@ -994,7 +994,7 @@ You can also specify -header as a suffix (ex: --compile=glsl-header) to generate
 	nlohmann::ordered_json Compiler::ReflectType(const nzsl::Ast::StructType& exprType) const
 	{
 		return {
-			{"type",  "struct"},
+			{"kind",  "struct"},
 			{"index", exprType.structIndex}
 		};
 	}
@@ -1002,7 +1002,7 @@ You can also specify -header as a suffix (ex: --compile=glsl-header) to generate
 	nlohmann::ordered_json Compiler::ReflectType(const nzsl::Ast::TextureType& exprType) const
 	{
 		return {
-			{"type",         "texture"},
+			{"kind",         "texture"},
 			{"accessPolicy", exprType.accessPolicy},
 			{"baseType",     nzsl::Ast::ToString(exprType.baseType)},
 			{"dim",          nzsl::Parser::ToString(exprType.dim)},
@@ -1013,7 +1013,7 @@ You can also specify -header as a suffix (ex: --compile=glsl-header) to generate
 	nlohmann::ordered_json Compiler::ReflectType(const nzsl::Ast::Type& exprType) const
 	{
 		return {
-			{"type",  "type"},
+			{"kind",  "type"},
 			{"index", exprType.typeIndex}
 		};
 	}
@@ -1021,7 +1021,7 @@ You can also specify -header as a suffix (ex: --compile=glsl-header) to generate
 	nlohmann::ordered_json Compiler::ReflectType(const nzsl::Ast::UniformType& exprType) const
 	{
 		return {
-			{"type",        "uniform"},
+			{"kind",        "uniform"},
 			{"structIndex", exprType.containedType.structIndex}
 		};
 	}
@@ -1029,7 +1029,7 @@ You can also specify -header as a suffix (ex: --compile=glsl-header) to generate
 	nlohmann::ordered_json Compiler::ReflectType(const nzsl::Ast::VectorType& exprType) const
 	{
 		return {
-			{"type",     "vector"},
+			{"kind",     "vector"},
 			{"dims",     exprType.componentCount},
 			{"baseType", nzsl::Ast::ToString(exprType.type)}
 		};
