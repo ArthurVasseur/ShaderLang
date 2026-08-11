@@ -110,6 +110,7 @@ namespace nzsl
 			{ Ast::BuiltinEntry::DrawIndex,               { "gl_DrawID",               GlslCapability::ShaderDrawParameters_DrawIndex } },
 			{ Ast::BuiltinEntry::FragCoord,               { "gl_FragCoord",            GlslCapability::None } },
 			{ Ast::BuiltinEntry::FragDepth,               { "gl_FragDepth",            GlslCapability::None } },
+			{ Ast::BuiltinEntry::FrontFacing,             { "gl_FrontFacing",          GlslCapability::None } },
 			{ Ast::BuiltinEntry::GlocalInvocationIndices, { "gl_GlobalInvocationID",   GlslCapability::None } },
 			{ Ast::BuiltinEntry::InstanceIndex,           { "gl_InstanceID",           GlslCapability::ShaderDrawParameters_BaseInstance } },
 			{ Ast::BuiltinEntry::LocalInvocationIndex,    { "gl_LocalInvocationIndex", GlslCapability::None } },

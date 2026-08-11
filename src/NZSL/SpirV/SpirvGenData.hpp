@@ -43,6 +43,7 @@ namespace nzsl::SpirvGenData
 		{ Ast::BuiltinEntry::DrawIndex,               { SpirvBuiltIn::DrawIndex,            SpirvCapability::DrawParameters, SpirvVersion{ 1, 3 } } },
 		{ Ast::BuiltinEntry::FragCoord,               { SpirvBuiltIn::FragCoord,            SpirvCapability::Shader,         SpirvVersion{ 1, 0 } } },
 		{ Ast::BuiltinEntry::FragDepth,               { SpirvBuiltIn::FragDepth,            SpirvCapability::Shader,         SpirvVersion{ 1, 0 } } },
+		{ Ast::BuiltinEntry::FrontFacing,             { SpirvBuiltIn::FrontFacing,          SpirvCapability::Shader,         SpirvVersion{ 1, 0 } } },
 		{ Ast::BuiltinEntry::GlocalInvocationIndices, { SpirvBuiltIn::GlobalInvocationId,   SpirvCapability::Shader,         SpirvVersion{ 1, 0 } } },
 		{ Ast::BuiltinEntry::InstanceIndex,           { SpirvBuiltIn::InstanceIndex,        SpirvCapability::Shader,         SpirvVersion{ 1, 0 } } },
 		{ Ast::BuiltinEntry::LocalInvocationIndex,    { SpirvBuiltIn::LocalInvocationIndex, SpirvCapability::Shader,         SpirvVersion{ 1, 0 } } },
