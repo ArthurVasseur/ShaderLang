@@ -10,7 +10,7 @@
 				{
 					"name": "color",
 					"type": {
-						"type": "vector",
+						"kind": "vector",
 						"dims": 4,
 						"baseType": "f32"
 					},
@@ -19,7 +19,7 @@
 				{
 					"name": "normal",
 					"type": {
-						"type": "vector",
+						"kind": "vector",
 						"dims": 3,
 						"baseType": "f32"
 					},
@@ -28,7 +28,7 @@
 				{
 					"name": "roughness",
 					"type": {
-						"type": "primitive",
+						"kind": "primitive",
 						"primitiveType": "f32"
 					},
 					"offset": 28
@@ -36,7 +36,7 @@
 				{
 					"name": "metalness",
 					"type": {
-						"type": "primitive",
+						"kind": "primitive",
 						"primitiveType": "f32"
 					},
 					"offset": 32
